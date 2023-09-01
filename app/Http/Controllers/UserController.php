@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -32,7 +31,6 @@ class UserController extends Controller
             "email" => $request->email,
             "namdes" => $request->namdes,
         ]);
-        Alert::success('Berhasil', 'Data User Berhasil Ditambah');
         return redirect("user");
     }
 
@@ -46,6 +44,7 @@ class UserController extends Controller
     {
         $data = User::find($id);
         $data->update([
+            "id_desa" => $request->id_desa,
             "level" => $request->level,
         ]);
         return redirect('user');

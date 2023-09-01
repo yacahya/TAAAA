@@ -32,9 +32,9 @@
                 @foreach ($data as $item)
                 <tr class="text-center">
                     <td>{{$no++}}</td>
-                    <td> {{ $item->fullName}} </td>
+                    <td> {{ $item->name}} </td>
                     <td> {{ $item->email}} </td>
-                    <td> {{ $item->namdes}} </td>
+                    <td> {{ $item->desa->nama_desa ?? "desa belum di pilih"}} </td>
                     <td> {{ $item->level}} </td>
                     <td>
                         <form method="POST" action="{{ url('user') . '/' . $item->id }}">

@@ -24,7 +24,7 @@
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
                 <div class="text-center my-2">
-                    <img src="{{ asset('AdminLTE3') }}/dist/img/itg.png" alt="logo" width="110">
+                    <img src="{{ asset('AdminLTE3') }}/dist/img/logo.png" alt="logo" width="90">
                 </div>
             </div>
             <div class="card-body">

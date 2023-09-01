@@ -21,7 +21,7 @@
             <select name="jenis" class="form-control">
                 
                 <option value="text">Text</option>
-                <option value="uplaod">Upload</option>
+                <option value="upload">Upload</option>
             </select>
         </div>
 

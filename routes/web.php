@@ -36,12 +36,13 @@ Route::GET('/', [App\Http\Controllers\DashboardController::class, 'index'])->nam
 // Route::GET('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 Route::GET('/riwayat', [App\Http\Controllers\PengajuanController::class, 'riwayat'])->name('riwayat');
 
-Route::get('/user', 'UserController@index')->name('user');
-Route::get('/user/create', 'UserController@create')->name('user.create');
-Route::post('/user', 'UserController@simpan')->name('user.simpan');
-Route::get('/user/edit/{id}', 'UserController@edit')->name('user.edit');
-Route::delete('user/{id}', 'UserController@delete')->name('user.delete');
-Route::get('/setting', 'UserController@setting')->name('user.setting');
+Route::get('/user', [App\Http\Controllers\UserController::class,'index'])->name('user');
+Route::get('/user/create', [App\Http\Controllers\UserController::class,'create'])->name('user.create');
+Route::post('/user', [App\Http\Controllers\UserController::class,'simpan'])->name('user.simpan');
+Route::get('/user/edit/{id}', [App\Http\Controllers\UserController::class,'edit'])->name('user.edit');
+Route::post('/user/edit/{id}', [App\Http\Controllers\UserController::class,'editsimpan'])->name('user.editsimpam');
+Route::delete('user/{id}', [App\Http\Controllers\UserController::class,'delete'])->name('user.delete');
+Route::get('/setting', [App\Http\Controllers\UserController::class,'setting'])->name('user.setting');
 
 Route::get('/profile', [App\Http\Controllers\UserController::class, 'profile']);
 
@@ -57,6 +58,11 @@ Route::GET('/desa', [App\Http\Controllers\MasterController::class, 'desa'])->nam
 Route::GET('/pengajuan/{layanan}', [App\Http\Controllers\PengajuanController::class, 'tambah'])->name('pengajuan.tambah');
 Route::POST('/pengajuan/{layanan}', [App\Http\Controllers\PengajuanController::class, 'simpan'])->name('pengajuan.simpan');
 
+
+
+Route::GET('/riwayat/{layanan}', [App\Http\Controllers\PengajuanController::class, 'riwayat'])->name('riwayat.index');
+Route::GET('/riwayat/{layanan}/{pengajuan}', [App\Http\Controllers\PengajuanController::class, 'riwayatDetail'])->name('riwayat.detail');
+Route::POST('/riwayat/{layanan}/{pengajuan}', [App\Http\Controllers\PengajuanController::class, 'aksi'])->name('riwayat.aksi');
 
 
 

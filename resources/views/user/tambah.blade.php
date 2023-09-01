@@ -19,7 +19,7 @@
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label">Nama</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="text" name="name" placeholder="Name">
+                                    <input class="form-control" type="text" name="no_wa" placeholder="Name">
                                 </div>
                             </div>
 

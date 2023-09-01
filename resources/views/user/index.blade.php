@@ -1,6 +1,6 @@
-@extends('layouts.admin')
+@extends('layout.template')
 @section('title','User')
-@section('main-content')
+@section('content')
 <!-- Page Heading -->
 
 <div class="card shadow mb-4">

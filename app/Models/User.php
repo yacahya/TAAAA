@@ -22,7 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
         'id_desa',
-        'id_detail',
+        'level',
     ];
 
     /**
@@ -43,4 +43,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function desa()
+    {
+        return $this->hasOne(Desa::class,'id','id_desa');
+    }
+
+    
 }

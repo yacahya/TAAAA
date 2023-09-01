@@ -16,67 +16,29 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form method="POST" action="">
+            <form method="POST" action="" enctype="multipart/form-data">
+              
                 @csrf
               <div class="card-body">
-                @foreach($form as $item)
-                @if($item->jenis == "text")
-                <div class="form-group">
-                  <label for="exampleInputEmail1">{{$item->nama_isian}}</label>
-                  <input type="text" name="text-{{$item->id}}" class="form-control" id="exampleInputEmail1" placeholder="Masukan NIK Bayi">
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Nomor WA Pemohon</label>
+                  <input type="text" name="no_wa" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nomor WA Warga">
                 </div>
-                @else
+                @foreach($formIsian as $items)
+                <input type="hidden" name="id_formIsian[]" value="{{ $items->id }}">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">{{$item->nama_isian}}</label>
-                  <input type="file" name="upload-{{ $item->id }}" class="form-control" id="exampleInputEmail1" placeholder="Masukan NIK Bayi">
+                  <label for="exampleInputEmail1">{{$items->nama_isian}}</label>
+                  <input type="text" name="text[]" class="form-control" id="exampleInputEmail1" placeholder="Masukan NIK Bayi">
                 </div>
-                @endif
                 @endforeach
-                <!-- <div class="form-group">
-                  <label for="exampleInputPassword1">Nama Lengkap</label>
-                  <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Nama Lengkap bayi">
-                </div>
+                @foreach($formUpload as $item)
+                <input type="hidden" name="id_formUpload[]" value="{{ $item->id }}">
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Tempat Lahir</label>
-                  <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Tempat Lahir">
+                  <label for="exampleInputEmail1">{{$item->nama_isian}}</label>
+                  <input type="file" name="upload[]" class="form-control" id="exampleInputEmail1" placeholder="Masukan NIK Bayi">
                 </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Tanggal Lahir</label>
-                  <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Tanggal Lahir">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Kelahiran Anak Ke</label>
-                  <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Kelahiran Anak Ke berapa">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Nama Penolong Kelahiran</label>
-                  <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Nama Penolong Kelahiran">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Berat Bayi</label>
-                  <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Berat Bayi">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Panjang Bayi</label>
-                  <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Panjang Bayi">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">NIK Saksi ke 1</label>
-                  <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Nama Saksi ke 1</label>
-                  <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">NIK Saksi ke 2</label>
-                  <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Nama Saksi ke 2</label>
-                  <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="">
-                </div> -->
-
+                @endforeach
+               
               </div>
               <!-- /.card-body -->
               <div class="card-footer">

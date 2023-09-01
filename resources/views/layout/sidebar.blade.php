@@ -16,13 +16,7 @@
             <div class="info">
                 <span class="d-block text-light"> {{ Auth::user()->name }}</span>
                 <span class="badge badge-primary"></i>
-                    @if (auth()->user()->level == 'Admin')
-                    Admin
-                    @elseif (auth()->user()->level == 'Mahasiswa')
-                    Mahasiswa
-                    @elseif (auth()->user()->level == 'Dosen')
-                    Dosen
-                    @endif
+                    {{Auth()->user()->desa->nama_desa ??"Desa belum di set"}} ( @include('badges.level',['item'=> Auth()->user()->level ?? 3]) )
                 </span>
             </div>
         </div>
@@ -40,6 +34,7 @@
                         </p>
                     </a>
                 </li>
+                @if( Auth()->user()->level == 1)
                 <li class="nav-item">
                     <a href="/" class="nav-link {{ request()->is('') ? '' : '' }}">
                         <i class="nav-icon fas fa-book"></i>
@@ -66,7 +61,8 @@
 
                     </ul>
                 </li>
-                <li class="nav-item">
+                @endif
+                <li class="nav-item  menu-is-opening menu-open">
                     <a href="/" class="nav-link {{ request()->is('') ? '' : '' }}">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
@@ -86,7 +82,7 @@
 
                     </ul>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item  menu-is-opening menu-open">
                     <a href="/" class="nav-link {{ request()->is('') ? '' : '' }}">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
@@ -97,7 +93,7 @@
                     <ul class="nav nav-treeview">
                         @foreach(App\Models\Layanan::all() as $item)
                         <li class="nav-item">
-                            <a href="/lahir" class="nav-link">
+                            <a href="{{ url('riwayat').'/'.$item->id }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{$item->jenis_layanan}}</p>
                             </a>
@@ -106,7 +102,7 @@
 
                     </ul>
                 </li>
-                
+                @if( Auth()->user()->level ==  1)
                 <li class="nav-item ">
                     <a href="/user" class="nav-link {{ request()->is('about') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user"></i>
@@ -115,14 +111,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item ">
-                    <a href="/setting" class="nav-link {{ request()->is('about') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-info-circle"></i>
-                        <p>
-                            Setting
-                        </p>
-                    </a>
-                </li>
+                @endif
         </nav>
         <!-- /.sidebar-menu -->
     </div>

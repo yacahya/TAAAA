@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title">DataTable with default features</h3>
+    <h3 class="card-title">{{$dataLayanan->jenis_layanan }}</h3>
   </div>
   <!-- /.card-header -->
   <div class="card-body">
@@ -11,23 +11,45 @@
             <center>No</center>
           </th>
           <th>
-            <center>Nama Lengkap</center>
+            <center>Nama User Pemohon</center>
           </th>
           <th>
-            <center>Tempat Lahir</center>
+            <center>Desa</center>
           </th>
           <th>
-            <center>Tanggal Lahir</center>
+            <center>Layanan</center>
           </th>
           <th>
-            <center>Anak Ke</center>
+            <center>Status</center>
+          </th>
+          <th>
+            <center>Aksi</center>
           </th>
       </thead>
       <tbody>
+        @php($no = 1)
 
+               @foreach ($data as $item)
+                <tr class="text-center">
+                    <td>{{$no++}}</td>
+                    <td> {{ $item->user->name}} </td>
+                    <td> {{ $item->desa->nama_desa ?? "desa belum di pilih"}} </td>
+                    <td> {{ $item->layanan->jenis_layanan}} </td>
+                    <td> @include('badges.status',['item'=>$item->status]) </td>
+                    <td>
+                        <a href=" {{url()->current()}}/{{$item->id}}" class="btn btn-primary">Detail</a>
+                    </td>
+                </tr>
+                @endforeach
       </tbody>
-
+     
     </table>
+    <div class="flex justify-center">
+                  {{ $data->links() }}
+                </div>
+
+            </div>
+
   </div>
   <!-- /.card-body -->
 </div>
