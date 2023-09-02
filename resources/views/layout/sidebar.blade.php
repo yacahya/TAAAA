@@ -73,7 +73,7 @@
                     <ul class="nav nav-treeview">
                         @foreach(App\Models\Layanan::all() as $item)
                         <li class="nav-item">
-                            <a href="{{ url('pengajuan').'/'.$item->id }}" class="nav-link">
+                            <a href="{{ url('pengajuan').'/'.$item->id }}/0" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{$item->jenis_layanan}}</p>
                             </a>
@@ -93,7 +93,7 @@
                     <ul class="nav nav-treeview">
                         @foreach(App\Models\Layanan::all() as $item)
                         <li class="nav-item">
-                            <a href="{{ url('riwayat').'/'.$item->id }}" class="nav-link">
+                            <a href="{{ url('riwayat').'/'.$item->id }}/0" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{$item->jenis_layanan}}</p>
                             </a>

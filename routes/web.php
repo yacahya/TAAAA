@@ -53,6 +53,7 @@ Route::GET('/dataform', [App\Http\Controllers\MasterController::class, 'dataform
 Route::POST('/dataform', [App\Http\Controllers\MasterController::class, 'dataformsimpan'])->name('dataform.simpan');
 Route::GET('/dataform/{id}', [App\Http\Controllers\MasterController::class, 'dataformdelete'])->name('dataform.delete');
 Route::GET('/desa', [App\Http\Controllers\MasterController::class, 'desa'])->name('desa');
+Route::POST('/desa', [App\Http\Controllers\MasterController::class, 'simpandesa'])->name('desa.simpan');
 
 
 Route::GET('/pengajuan/{layanan}', [App\Http\Controllers\PengajuanController::class, 'tambah'])->name('pengajuan.tambah');
@@ -60,9 +61,9 @@ Route::POST('/pengajuan/{layanan}', [App\Http\Controllers\PengajuanController::c
 
 
 
-Route::GET('/riwayat/{layanan}', [App\Http\Controllers\PengajuanController::class, 'riwayat'])->name('riwayat.index');
-Route::GET('/riwayat/{layanan}/{pengajuan}', [App\Http\Controllers\PengajuanController::class, 'riwayatDetail'])->name('riwayat.detail');
-Route::POST('/riwayat/{layanan}/{pengajuan}', [App\Http\Controllers\PengajuanController::class, 'aksi'])->name('riwayat.aksi');
+Route::GET('/riwayat/{layanan}/{status}', [App\Http\Controllers\PengajuanController::class, 'riwayat'])->name('riwayat.index');
+Route::GET('/riwayat/{layanan}/{status}/{pengajuan}', [App\Http\Controllers\PengajuanController::class, 'riwayatDetail'])->name('riwayat.detail');
+Route::POST('/riwayat/{layanan}/{status}/{pengajuan}', [App\Http\Controllers\PengajuanController::class, 'aksi'])->name('riwayat.aksi');
 
 
 

@@ -16,6 +16,7 @@
             <div class="info-box-content">
                 <span class="info-box-text text-center text-muted">Nama Pemohon :{{ $data->user->name }}</span>
                 <span class="info-box-number text-center text-muted mb-0">Desa : {{ $data->desa->nama_desa }}</span>
+                <span class="info-box-number text-center text-muted mb-0">Desa : {{ $data->user->email }}</span>
             </div>
         </div>
     </div>
@@ -71,6 +72,8 @@
         </div>
     </div>
 </div>
+
+@include('riwayat.log-riwayat')
 @if($data->status == 0 &&  Auth()->user()->level == 1)
 
 <div class=" row p-5 ">

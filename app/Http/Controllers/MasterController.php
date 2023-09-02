@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 Use App\Models\Layanan;
 Use App\Models\Desa;
 Use App\Models\DataForm;
+use Alert;
 class MasterController extends Controller
 {
     public function layanan()
@@ -38,4 +39,17 @@ class MasterController extends Controller
         $data =Desa::all();
         return view("desa.index",compact("data"));
     }
+
+
+    public function simpandesa(Request $request)
+    {
+
+        Desa::create([
+            'nama_desa' => $request->nama_desa,
+        ]);
+        Alert::success('success',"berhasil desa telah di tambahkan");
+        return redirect()->back();
+    }
 }
+
+

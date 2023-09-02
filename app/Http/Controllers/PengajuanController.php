@@ -7,7 +7,7 @@ use App\Models\Layanan;
 use App\Models\DataForm;
 use App\Models\Pengajuan;
 use App\Models\Isian;
-
+use Alert;
 
 use App\Services\NotificationService;
 class PengajuanController extends Controller
@@ -24,6 +24,7 @@ class PengajuanController extends Controller
         $layanan = Layanan::find($layanan);
         $formIsian = DataForm::whereIdLayanan($layanan->id)->whereJenis('text')->orderBy('jenis', "asc")->get();
         $formUpload = DataForm::whereIdLayanan($layanan->id)->whereJenis('upload')->orderBy('jenis', "asc")->get();
+       
         return view('pengajuan.tambah', compact('layanan','formIsian','formUpload'));
         
     }
@@ -62,17 +63,24 @@ class PengajuanController extends Controller
                 'jenis'=>  1,
             ]);
         }
+        Alert::success('success',"berhasil di tambahkan");
         return redirect()->back();
         
     }
 
-    public function riwayat($layanan)
+    public function riwayat($layanan, $status)
     {
-        $data = Pengajuan::whereIdLayanan($layanan)->whereIdUser(Auth()->user()->id)->paginate(5);
+        if(Auth()->user()->level  == 1){
+            $data = Pengajuan::whereIdLayanan($layanan)->whereStatus($status)->paginate(5);
+        }else{
+            $data = Pengajuan::whereIdLayanan($layanan)->whereStatus($status)->whereIdUser(Auth()->user()->id)->paginate(5);
+        }
+        
         $dataLayanan = Layanan::find($layanan);
-        return view('riwayat.index', compact('data','dataLayanan'));
+        
+        return view('riwayat.index', compact('data','dataLayanan','status'));
     }
-    public function riwayatDetail($layanan, $pengajuan)
+    public function riwayatDetail($layanan, $status, $pengajuan)
     {
         $data = Pengajuan::find($pengajuan);
         $dataLayanan = Layanan::find($layanan);
@@ -85,7 +93,7 @@ class PengajuanController extends Controller
        $ajuan = Pengajuan::find($pengajuan);
     
        $tombol =  $request->tombol;
-       $pesan =   $request->pesan;
+       $pesan =   $request->pesan; 
 
        if($tombol =="proses"){
         $ajuan->update([

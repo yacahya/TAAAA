@@ -6,7 +6,10 @@
         <span class="badge badge-success"> Selesai</span>
         @break
         @case(2)
-        <span class="badge badge-warning"> diTolak</span>
+        <span class="badge badge-warning"> Revisi</span>
+        @break
+        @case(3)
+        <span class="badge badge-danger"> tolak</span>
         @break
 
     @default

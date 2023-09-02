@@ -2,7 +2,44 @@
   <div class="card-header">
     <h3 class="card-title">{{$dataLayanan->jenis_layanan }}</h3>
   </div>
-  <!-- /.card-header -->
+  ,<div class="row">
+    <div class="col-md-3">
+      <div class="card">
+        <a href="{{ url('riwayat'.'/'.$dataLayanan->id) }}/0" class="btn btn-primary" >Baru
+
+        <br>
+        {{ App\Models\Pengajuan::whereIdLayanan($dataLayanan->id)->whereStatus(0)->count() }}
+        </a>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <a href="{{ url('riwayat'.'/'.$dataLayanan->id) }}/1" class="btn btn-success">Selesai
+
+        <br>
+        {{ App\Models\Pengajuan::whereIdLayanan($dataLayanan->id)->whereStatus(1)->count() }}
+        </a>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <a href="{{ url('riwayat'.'/'.$dataLayanan->id) }}/2" class="btn btn-warning">revisi
+
+        <br>
+        {{ App\Models\Pengajuan::whereIdLayanan($dataLayanan->id)->whereStatus(2)->count() }}
+        </a>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <a href="{{ url('riwayat'.'/'.$dataLayanan->id) }}/3" class="btn btn-danger">Tolak
+
+        <br>
+        {{ App\Models\Pengajuan::whereIdLayanan($dataLayanan->id)->whereStatus(3)->count() }}
+        </a>
+      </div>
+    </div>
+  </div>
   <div class="card-body">
     <table id="example1" class="table table-bordered table-striped">
       <thead>
